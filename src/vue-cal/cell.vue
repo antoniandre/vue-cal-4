@@ -10,6 +10,7 @@ transition-group.vuecal__cell(
     :key="options.transitions ? `${view.id}-${data.content}-${i}` : i"
     :class="splitsCount && splitClasses(split)"
     :data-split="splitsCount ? split.id : false"
+    :style="{'background-color': splitColor(split)}"
     column
     tabindex="0"
     :aria-label="data.content"
@@ -107,6 +108,9 @@ export default {
         'vuecal__cell-split--highlighted': this.highlightedSplit === split.id,
         [split.class]: !!split.class
       }
+    },
+    splitColor (split) {
+      return split.color
     },
 
     checkCellOverlappingEvents () {
